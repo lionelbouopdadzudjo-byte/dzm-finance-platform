@@ -1,0 +1,22 @@
+{
+  "name": "dzm-finance-platform",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "ocr-service",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\"",
+    "dev:all": "concurrently \"npm run dev -w backend\" \"npm run dev -w frontend\" \"npm run dev -w ocr-service\"",
+    "build": "npm run build -w shared && npm run build -w backend && npm run build -w frontend",
+    "test": "npm run test -w backend && npm run test -w frontend",
+    "test:ocr": "npm run test -w ocr-service",
+    "seed": "npm run seed -w backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

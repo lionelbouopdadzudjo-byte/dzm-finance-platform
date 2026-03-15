@@ -1,0 +1,28 @@
+import { Router } from "express";
+import authRoutes from "./auth.routes";
+import documentRoutes from "./documents.routes";
+import invoiceRoutes from "./invoices.routes";
+import paymentRoutes from "./payments.routes";
+import matchRoutes from "./matches.routes";
+import dashboardRoutes from "./dashboard.routes";
+import searchRoutes from "./search.routes";
+import alertRoutes from "./alerts.routes";
+import commentRoutes from "./comments.routes";
+import reportRoutes from "./reports.routes";
+import aiRoutes from "./ai.routes";
+import telegramRoutes from "./telegram.routes";
+
+const router = Router();
+router.use("/auth", authRoutes);
+router.use("/documents", documentRoutes);
+router.use("/invoices", invoiceRoutes);
+router.use("/payments", paymentRoutes);
+router.use("/matches", matchRoutes);
+router.use("/dashboard", dashboardRoutes);
+router.use("/search", searchRoutes);
+router.use("/alerts", alertRoutes);
+router.use("/comments", commentRoutes);
+router.use("/reports", reportRoutes);
+router.use("/", aiRoutes);
+router.use("/telegram", telegramRoutes);
+export default router;
