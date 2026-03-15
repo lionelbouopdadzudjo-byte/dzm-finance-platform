@@ -1,13 +1,12 @@
-import { ensureInMemorySeeded } from "../data/seed-data";
-import { store } from "../data/store";
+import { hydrateStoreFromDisk, store } from "../data/store";
 
 export const invoicesRepository = {
   list: () => {
-    ensureInMemorySeeded();
+    hydrateStoreFromDisk();
     return store.invoices;
   },
   byId: (id: string) => {
-    ensureInMemorySeeded();
+    hydrateStoreFromDisk();
     return store.invoices.find((x) => x.id === id);
   },
   create: (invoice: any) => (store.invoices.push(invoice), invoice),
