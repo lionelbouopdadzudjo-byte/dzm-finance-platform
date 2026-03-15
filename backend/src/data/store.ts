@@ -1,4 +1,9 @@
-export const store = {
+import fs from "node:fs";
+import path from "node:path";
+
+const seedSnapshotPath = path.resolve(__dirname, "store.seed.json");
+
+const createDefaultStore = () => ({
   ownerAccount: { id: "owner-1", full_name: "Propriétaire DZM", email: "owner@dzm.local", telegram_chat_id: "12345", timezone: "Africa/Douala" },
   businessUnits: [
     { id: "bu-a", code: "DZM_A", name: "DZM A", owner_account_id: "owner-1", is_active: true },
@@ -13,4 +18,23 @@ export const store = {
   anomalies: [] as any[],
   alerts: [{ id: "alert-1", owner_account_id: "owner-1", type: "critical", title: "Facture en retard", message: "INV-2025-001 est overdue", channel: "in_app", status: "pending" }],
   comments: [] as any[]
+});
+
+const defaultStore = createDefaultStore();
+
+const loadSeedSnapshot = () => {
+  if (!fs.existsSync(seedSnapshotPath)) return null;
+  const raw = fs.readFileSync(seedSnapshotPath, "utf-8");
+  return JSON.parse(raw);
+};
+
+const initialSeedSnapshot = loadSeedSnapshot();
+
+export const store = {
+  ...defaultStore,
+  ...(initialSeedSnapshot ?? {})
+};
+
+export const persistStore = () => {
+  fs.writeFileSync(seedSnapshotPath, JSON.stringify(store, null, 2));
 };

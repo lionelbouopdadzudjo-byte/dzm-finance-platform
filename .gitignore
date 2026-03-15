@@ -8,3 +8,5 @@ dist
 __pycache__
 .pytest_cache
 .venv
+
+backend/src/data/store.seed.json
