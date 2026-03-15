@@ -1,0 +1,21 @@
+{
+  "invoice_example": {
+    "document_type": "invoice",
+    "confidence": 0.92,
+    "fields": {
+      "invoice_number": {"value": "INV-2025-011", "confidence": 0.96},
+      "issue_date": {"value": "2025-03-01", "confidence": 0.93},
+      "total_amount": {"value": 450000, "confidence": 0.95},
+      "business_unit_hint": {"value": "DZM A", "confidence": 0.88}
+    }
+  },
+  "payment_example": {
+    "document_type": "payment_proof",
+    "confidence": 0.86,
+    "fields": {
+      "provider": {"value": "mtn", "confidence": 0.81},
+      "amount": {"value": 200000, "confidence": 0.9},
+      "transaction_id": {"value": "TRX991223", "confidence": 0.84}
+    }
+  }
+}
